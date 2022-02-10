@@ -5,7 +5,7 @@ import { Product } from "./Product";
 @Entity("products_categories")
 export class ProductCategory {
   @PrimaryGeneratedColumn(`increment`)
-  id: number;
+  id?: number;
 
   @ManyToOne(() => Product, (product) => product.categories)
   @JoinColumn({ name: "product_id" })

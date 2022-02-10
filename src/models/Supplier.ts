@@ -15,7 +15,6 @@ export class Supplier {
   email: string;
 
   @Column({ type: "varchar" })
-  @IsEmpty({ message: "Por favor informe seu número de telefone" })
   phone_number: string;
 
   @Column({ type: "varchar" })

@@ -5,8 +5,8 @@ import { CategoryPostgresRepository } from "../../repositories/CategoryPostgresR
 export class DbCategory implements DbCategoryImpl {
   async add(category: Category): Promise<Category> {
     const repo = getCustomRepository(CategoryPostgresRepository);
-    const newAccount = await repo.add(category);
-    return newAccount;
+    const newCategory = await repo.add(category);
+    return newCategory;
   }
   async edit(id: number, category: Partial<Category>): Promise<Category> {
     const repo = getCustomRepository(CategoryPostgresRepository);

@@ -1,6 +1,5 @@
 import { DbUserAccount } from "../../domain/db-account";
 import { User } from "../../models/User";
-import { UserRepository } from "../protocols/UserRepositoy";
 import bcrypt from "bcrypt";
 import { getCustomRepository } from "typeorm";
 import { UserPostgresRepository } from "../../repositories/UserPostgresRepository";

@@ -40,7 +40,7 @@ export class Product {
   @Column({ type: "varchar" })
   alias: string;
 
-  @Column({ type: "timestamp" })
+  @Column({ type: "timestamp", default: "CURRENT_TIMESTAMP" })
   created_at: string;
 
   @ManyToOne(() => Supplier, (supplier) => supplier.products)
@@ -65,6 +65,6 @@ export class Product {
   @OneToMany(() => ProductCategory, (category) => category.product)
   categories: ProductCategory[];
 
-  @OneToMany(() => ProductFile, file => file.product)
-  files: ProductFile[]
+  @OneToMany(() => ProductFile, (file) => file.product)
+  files: ProductFile[];
 }

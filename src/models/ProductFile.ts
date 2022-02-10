@@ -12,7 +12,7 @@ export class ProductFile {
   @Column({ type: "varchar" })
   filename: string;
 
-  @Column({ type: "timestamp" })
+  @Column({ type: "timestamp" , default: 'CURRENT_TIMESTAMP'})
   created_at: string;
 
   @ManyToOne(() => Product, (prod) => prod.files)
