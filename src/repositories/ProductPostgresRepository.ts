@@ -5,8 +5,7 @@ import { Product } from "../models/Product";
 @EntityRepository(Product)
 export class ProductPostgresRepository
   extends AbstractRepository<Product>
-  implements ProductRepository
-{
+  implements ProductRepository {
   async add(product: Product): Promise<Product> {
     const productAdd = await this.repository.save(product);
     return productAdd;
@@ -18,11 +17,11 @@ export class ProductPostgresRepository
   }
 
   async findById(id: number): Promise<Product> {
-    return await this.repository.findOneOrFail(id);
+    return await this.repository.findOneOrFail(id, { relations: ['files'] });
   }
 
   async findAll(): Promise<Product[]> {
-    return this.repository.find({ order: { id: `DESC` } });
+    return this.repository.find({ order: { id: `DESC` }, relations: ['files'] });
   }
 
   create(product: Partial<Product>): Product {

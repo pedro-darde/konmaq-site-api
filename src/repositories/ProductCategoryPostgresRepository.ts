@@ -5,9 +5,8 @@ import { ProductCategory } from "../models/ProductCategory";
 @EntityRepository(ProductCategory)
 export class ProductCategoryPostgresRepository
   extends AbstractRepository<ProductCategory>
-  implements ProductCategoryRepository
-{
-  async add(productCategory: ProductCategory): Promise<ProductCategory> {
+  implements ProductCategoryRepository {
+  async add(productCategory: ProductCategory[]): Promise<ProductCategory[]> {
     const productCategoryAdd = await this.repository.save(productCategory);
     return productCategoryAdd;
   }

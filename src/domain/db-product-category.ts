@@ -1,7 +1,7 @@
 import { ProductCategory } from "../models/ProductCategory";
 
 export interface DbProductCategoryImpl {
-  add: (productCategory: DbAddProductCategory | DbAddProductCategory[]) => Promise<ProductCategory>;
+  add: (productCategory: DbAddProductCategory[]) => Promise<ProductCategory[]>;
   findAll: () => Promise<ProductCategory[]>;
   create: (productCategory: Partial<ProductCategory>) => ProductCategory;
 }
