@@ -8,6 +8,7 @@ import { makeListProductFactory } from "../factories/product/list-product-factor
 import { makeShowProductFactory } from "../factories/product/show-user-factory";
 import { fileHandler } from "../handler/file";
 import path from "path";
+import { makeListProductHomepageFactory } from "../factories/product/list-homepage-factory";
 export default (router: Router) => {
   
   const storage = multer.diskStorage({
@@ -21,7 +22,8 @@ export default (router: Router) => {
   const upload = multer({ storage: storage })
 
   router.post("/product", upload.array('images'), fileHandler, adaptRoute(makeAddProductFactory()));
-  router.get("/product", adaptRoute(makeListProductFactory()));
   router.get("/product/:id", adaptRoute(makeShowProductFactory()));
+  router.get("/product", adaptRoute(makeListProductFactory()));
+  router.get("/product-homepage", adaptRoute(makeListProductHomepageFactory()));
   router.patch("/product/:id", adaptRoute(makeEditProductFactory()));
 };

@@ -51,8 +51,11 @@ export class User {
   cep: string;
 
   @Column({ type: "varchar" })
-  password: string
-  
+  neighboor: string;
+
+  @Column({ type: "varchar" })
+  password: string;
+
   @Column({ type: "boolean", default: true })
   active?: boolean;
 }

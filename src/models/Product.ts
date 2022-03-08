@@ -62,7 +62,10 @@ export class Product {
   @Column({ type: "boolean", default: true })
   active: boolean;
 
-  @OneToMany(() => ProductCategory, (category) => category.product)
+  @OneToMany(() => ProductCategory, (category) => category.product, {
+    onUpdate: "NO ACTION",
+    onDelete: "CASCADE",
+  })
   categories: ProductCategory[];
 
   @OneToMany(() => ProductFile, (file) => file.product)
