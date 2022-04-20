@@ -1,10 +1,15 @@
-import { validate } from "class-validator";
+import { validate, ValidationError } from "class-validator";
 import { fileDir } from "../../constants/fileDir";
 import { DbProductImpl } from "../../domain/db-product";
 import { DbProductCategoryImpl } from "../../domain/db-product-category";
 import { DbProductFileImpl } from "../../domain/db-product-file";
 import { File } from "../../domain/file";
-import { badRequest, ok, serverError } from "../../helpers/http-helper";
+import {
+  badRequest,
+  ok,
+  serverError,
+  validationError,
+} from "../../helpers/http-helper";
 import { Product } from "../../models/Product";
 import { ProductCategory } from "../../models/ProductCategory";
 import { ProductFile } from "../../models/ProductFile";
@@ -14,7 +19,7 @@ import { HttpRequest, HttpResponse } from "../../protocols/http";
 export class AddProductController implements Controller {
   private readonly dbProduct: DbProductImpl;
   private readonly dbProductCategory: DbProductCategoryImpl;
-  private readonly dbProductFile: DbProductFileImpl
+  private readonly dbProductFile: DbProductFileImpl;
 
   constructor(
     dbProduct: DbProductImpl,
@@ -23,13 +28,13 @@ export class AddProductController implements Controller {
   ) {
     this.dbProduct = dbProduct;
     this.dbProductCategory = dbProductCategory;
-    this.dbProductFile = dbProductFile
+    this.dbProductFile = dbProductFile;
   }
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       let { product } = httpRequest.body;
-      product = JSON.parse(product)
+      product = JSON.parse(product);
       const productParsed = this.dbProduct.create(product);
 
       const errors = await validate(productParsed, {
@@ -40,20 +45,20 @@ export class AddProductController implements Controller {
         let validationErrors: Array<string> = [];
         errors.forEach((err) => {
           const { constraints } = err;
-          /* @ts-ignore*/
+          /* @ts-ignore */
           validationErrors.push(Object.values(constraints)[0]);
         });
-        return badRequest(validationErrors);
+        return validationError(validationErrors);
       }
 
       const productAdded = await this.dbProduct.add(product);
 
       if (product.categories.length > 0) {
-        await this.addProductCategory(product.categories, productAdded)
+        await this.addProductCategory(product.categories, productAdded);
       }
 
       if (httpRequest.body.files && httpRequest.body.files.length > 0) {
-        await this.addProductFiles(httpRequest.body.files, productAdded)
+        await this.addProductFiles(httpRequest.body.files, productAdded);
       }
 
       return ok(productAdded);
@@ -63,22 +68,40 @@ export class AddProductController implements Controller {
     }
   }
 
-  private async addProductCategory(categories: Array<number>, product: Product) {
+  private async addProductCategory(
+    categories: Array<number>,
+    product: Product
+  ) {
     const productCategories: ProductCategory[] = [];
     categories.forEach((id: any) => {
       productCategories.push({ category: id, product: product });
+    });
+
+    const productCategoryValidation: ValidationError[] = [];
+
+    productCategories.forEach(async (productCategory) => {
+      const errors = await validate(productCategory, {
+        stopAtFirstError: false,
+      });
+      if (errors.length) {
+        productCategoryValidation.push(...errors);
+      }
     });
 
     await this.dbProductCategory.add(productCategories);
   }
 
   private async addProductFiles(files: Array<File>, product: Product) {
-    const productFiles: ProductFile[] = []
+    const productFiles: ProductFile[] = [];
 
-    files.forEach(file => {
-      const pathFile = `${process.env.API_URL}${fileDir}/${file.name}`
-      productFiles.push({ filename: file.name, product: product, path: pathFile })
-    })
+    files.forEach((file) => {
+      const pathFile = `${process.env.API_URL}${fileDir}/${file.name}`;
+      productFiles.push({
+        filename: file.name,
+        product: product,
+        path: pathFile,
+      });
+    });
 
     await this.dbProductFile.add(productFiles);
   }

@@ -6,6 +6,7 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
+import { ExistOnDatabaseValidator } from "../validation/ExistsOnDatabaseConstraintValidator";
 import { ProductCategory } from "./ProductCategory";
 
 @Entity("categories")

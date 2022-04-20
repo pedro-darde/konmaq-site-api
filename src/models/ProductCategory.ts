@@ -1,4 +1,5 @@
 import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { ExistOnDatabaseValidator } from "../validation/ExistsOnDatabaseConstraintValidator";
 import { Category } from "./Category";
 import { Product } from "./Product";
 
@@ -13,5 +14,6 @@ export class ProductCategory {
 
   @ManyToOne(() => Category, category => category.productCategory)
   @JoinColumn({ name: 'category_id'})
+  @ExistOnDatabaseValidator(Category)
   category: Category
 }
