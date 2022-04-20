@@ -1,5 +1,6 @@
 import { CustomProductFind } from "../data/protocols/ProductRepository";
 import { ProductCategory } from "../models/ProductCategory";
+import {Product} from "../models/Product";
 
 export interface DbProductCategoryImpl {
   add: (productCategory: DbAddProductCategory[]) => Promise<ProductCategory[]>;
@@ -10,6 +11,7 @@ export interface DbProductCategoryImpl {
     ids_category: number[],
     product: CustomProductFind
   ) => Promise<void>;
+  findByCategory: (category_id: number) => Promise<Product[]>
 }
 
 export type DbAddProductCategory = ProductCategory;

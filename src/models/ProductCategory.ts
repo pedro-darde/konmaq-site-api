@@ -1,19 +1,19 @@
-import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import { Category } from "./Category";
-import { Product } from "./Product";
+import {Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
+import {Category} from "./Category";
+import {Product} from "./Product";
 
 @Entity("products_categories")
 export class ProductCategory {
-  @PrimaryGeneratedColumn(`increment`)
-  id?: number;
+    @PrimaryGeneratedColumn(`increment`)
+    id?: number;
 
-  @ManyToOne(() => Product, (product) => product.categories, {
-    onDelete: "NO ACTION",
-  })
-  @JoinColumn({ name: "product_id" })
-  product: Product;
+    @ManyToOne(() => Product, (product) => product.categories, {
+        onDelete: "NO ACTION",
+    })
+    @JoinColumn({name: "product_id"})
+    product: Product;
 
-  @ManyToOne(() => Category, (category) => category.productCategory)
-  @JoinColumn({ name: "category_id" })
-  category: Category;
+    @ManyToOne(() => Category, (category) => category.productCategory)
+    @JoinColumn({name: "category_id"})
+    category: Category;
 }

@@ -24,6 +24,11 @@ export class DbCategory implements DbCategoryImpl {
     return await repo.findAll();
   }
 
+  async findForPage(): Promise<Category[]> {
+    const repo = getCustomRepository(CategoryPostgresRepository)
+    return await repo.findForPage()
+  }
+
   create(category: Partial<Category>): Category {
     const repo = getCustomRepository(CategoryPostgresRepository);
     return repo.create(category);

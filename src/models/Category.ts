@@ -5,6 +5,7 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  Tree,
 } from "typeorm";
 import { ProductCategory } from "./ProductCategory";
 
@@ -16,7 +17,7 @@ export class Category {
   @Column({ type: "varchar" })
   name: string;
 
-  @ManyToOne(() => Category, (cat) => cat.id)
+  @ManyToOne(() => Category, (cat) => cat.children)
   @JoinColumn({ name: "parent_id" })
   category: Category;
 

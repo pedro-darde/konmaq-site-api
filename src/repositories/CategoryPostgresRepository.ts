@@ -5,8 +5,7 @@ import { Category } from "../models/Category";
 @EntityRepository(Category)
 export class CategoryPostgresRepository
   extends AbstractRepository<Category>
-  implements CategoryRepository
-{
+  implements CategoryRepository {
   async add(category: Category): Promise<Category> {
     const userAdd = await this.repository.save(category);
     return userAdd;
@@ -22,7 +21,16 @@ export class CategoryPostgresRepository
   }
 
   async findAll(): Promise<Category[]> {
-    return this.repository.find({ order: { id: `DESC` } });
+    return await this.repository.find({ order: { id: `DESC` } });
+  }
+
+  async findForPage(parent: number | null = null, limit = 10): Promise<Category[]> {
+    if (limit < 0) return []
+    const categories = await this.repository.find({ where: { category: parent }, relations: ['children', 'category'], order: { id: 'DESC' } })
+    await Promise.all(categories.map(async (category) => {
+      category.children = await this.findForPage(category.id, limit - 1)
+    }))
+    return categories
   }
 
   create(category: Partial<Category>): Category {
