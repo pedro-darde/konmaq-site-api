@@ -11,8 +11,6 @@ import { ProductFile } from "./ProductFile";
 import { Supplier } from "./Supplier";
 
 import { IsNotEmpty, IsNumber } from "class-validator";
-import { ExistOnDatabaseValidator } from "../validation/ExistsOnDatabaseConstraintValidator";
-import { Category } from "./Category";
 
 @Entity("products")
 export class Product {
@@ -77,6 +75,6 @@ export class Product {
   @IsNotEmpty({ message: "Você deve informar ao menos uma categoria" })
   categories: ProductCategory[];
 
-  @OneToMany(() => ProductFile, (file) => file.product)
+  @OneToMany(() => ProductFile, (file) => file.product, { eager: true })
   files: ProductFile[];
 }

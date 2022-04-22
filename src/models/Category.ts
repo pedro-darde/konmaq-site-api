@@ -5,8 +5,8 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  Tree,
 } from "typeorm";
-import { ExistOnDatabaseValidator } from "../validation/ExistsOnDatabaseConstraintValidator";
 import { ProductCategory } from "./ProductCategory";
 
 @Entity("categories")
@@ -17,7 +17,7 @@ export class Category {
   @Column({ type: "varchar" })
   name: string;
 
-  @ManyToOne(() => Category, (cat) => cat.id)
+  @ManyToOne(() => Category, (cat) => cat.children)
   @JoinColumn({ name: "parent_id" })
   category: Category;
 

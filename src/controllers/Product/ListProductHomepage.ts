@@ -1,10 +1,9 @@
-import { EntityNotFoundError } from "typeorm";
 import { DbProductImpl } from "../../domain/db-product";
-import { entityNotFound, ok, serverError } from "../../helpers/http-helper";
+import { ok, serverError } from "../../helpers/http-helper";
 import { Controller } from "../../protocols/Controller";
 import { HttpRequest, HttpResponse } from "../../protocols/http";
 
-export class ShowProductController implements Controller {
+export class ListProductHomepage implements Controller {
   private readonly dbProduct: DbProductImpl;
 
   constructor(dbProduct: DbProductImpl) {
@@ -13,14 +12,9 @@ export class ShowProductController implements Controller {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      const { id } = httpRequest.params;
-      const product = await this.dbProduct.findById(id);
-      return ok(product);
+      const products = await this.dbProduct.findAllToHomePage();
+      return ok(products);
     } catch (e: any) {
-      if (e instanceof EntityNotFoundError) {
-        return entityNotFound(e);
-      }
-      console.log(e)
       return serverError(e);
     }
   }

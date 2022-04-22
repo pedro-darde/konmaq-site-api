@@ -5,6 +5,7 @@ export interface DbCategoryImpl {
   edit: (id: number, category: DbEditCategory) => Promise<Category>;
   findById: (id: number) => Promise<Category>;
   findAll: () => Promise<Category[]>;
+  findForPage: () => Promise<Category[]>
   create: (category: Partial<Category>) => Category;
 }
 

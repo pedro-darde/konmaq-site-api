@@ -2,6 +2,7 @@ import { getCustomRepository } from "typeorm";
 import { DbProductImpl } from "../../domain/db-product";
 import { Product } from "../../models/Product";
 import { ProductPostgresRepository } from "../../repositories/ProductPostgresRepository";
+import { CustomProductFind } from "../protocols/ProductRepository";
 export class DbProduct implements DbProductImpl {
   async add(product: Product): Promise<Product> {
     const repo = getCustomRepository(ProductPostgresRepository);
@@ -14,7 +15,7 @@ export class DbProduct implements DbProductImpl {
     return ProductEdited;
   }
 
-  async findById(id: number): Promise<Product> {
+  async findById(id: number): Promise<CustomProductFind> {
     const repo = getCustomRepository(ProductPostgresRepository);
     return await repo.findById(id);
   }
@@ -22,6 +23,34 @@ export class DbProduct implements DbProductImpl {
   async findAll(): Promise<Product[]> {
     const repo = getCustomRepository(ProductPostgresRepository);
     return await repo.findAll();
+  }
+
+  async findAllToHomePage(): Promise<{
+    releases: Product[];
+    popular: Product[];
+  }> {
+    const repo = getCustomRepository(ProductPostgresRepository);
+    return await repo.findAllToHomePage();
+  }
+
+  async startTranscation(): Promise<void> {
+    const repo = getCustomRepository(ProductPostgresRepository);
+    await repo.startTranscation();
+  }
+
+  async commit() {
+    const repo = getCustomRepository(ProductPostgresRepository);
+    await repo.commit();
+  }
+
+  async rollback() {
+    const repo = getCustomRepository(ProductPostgresRepository);
+    await repo.rollback();
+  }
+
+  async release(): Promise<void> {
+    const repo = getCustomRepository(ProductPostgresRepository);
+    await repo.release();
   }
 
   create(Product: Partial<Product>): Product {

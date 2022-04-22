@@ -60,7 +60,6 @@ export class AddProductController implements Controller {
       if (httpRequest.body.files && httpRequest.body.files.length > 0) {
         await this.addProductFiles(httpRequest.body.files, productAdded);
       }
-
       return ok(productAdded);
     } catch (e: any) {
       console.log(e);
@@ -75,17 +74,6 @@ export class AddProductController implements Controller {
     const productCategories: ProductCategory[] = [];
     categories.forEach((id: any) => {
       productCategories.push({ category: id, product: product });
-    });
-
-    const productCategoryValidation: ValidationError[] = [];
-
-    productCategories.forEach(async (productCategory) => {
-      const errors = await validate(productCategory, {
-        stopAtFirstError: false,
-      });
-      if (errors.length) {
-        productCategoryValidation.push(...errors);
-      }
     });
 
     await this.dbProductCategory.add(productCategories);
