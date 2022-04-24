@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/konmaq_site_api.iml" filepath="$PROJECT_DIR$/.idea/konmaq_site_api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/konmaq-site-api.iml" filepath="$PROJECT_DIR$/.idea/konmaq-site-api.iml" />
     </modules>
   </component>
 </project>

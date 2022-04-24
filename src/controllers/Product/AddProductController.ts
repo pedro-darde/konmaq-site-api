@@ -1,4 +1,5 @@
 import { validate, ValidationError } from "class-validator";
+import { defaultURL } from "../../constants/defaultURL";
 import { fileDir } from "../../constants/fileDir";
 import { DbProductImpl } from "../../domain/db-product";
 import { DbProductCategoryImpl } from "../../domain/db-product-category";
@@ -82,8 +83,10 @@ export class AddProductController implements Controller {
   private async addProductFiles(files: Array<File>, product: Product) {
     const productFiles: ProductFile[] = [];
 
+    const API_URL = process.env.API_URL || defaultURL
+
     files.forEach((file) => {
-      const pathFile = `${process.env.API_URL}${fileDir}/${file.name}`;
+      const pathFile = `${API_URL}${fileDir}/${file.name}`;
       productFiles.push({
         filename: file.name,
         product: product,
