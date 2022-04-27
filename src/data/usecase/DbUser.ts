@@ -28,6 +28,11 @@ export class DbUser implements DbUserAccount {
     return await repo.findAll();
   }
 
+  async findByEmail(email: string): Promise<User | undefined> {
+    const repo = getCustomRepository(UserPostgresRepository)
+    return await repo.findByEmail(email)
+  }
+
   create(user: Partial<User>): User {
     const repo = getCustomRepository(UserPostgresRepository);
     return repo.create(user);

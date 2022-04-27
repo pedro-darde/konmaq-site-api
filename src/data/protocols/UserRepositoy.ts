@@ -6,4 +6,5 @@ export interface UserRepository {
   findById: (id: number) => Promise<User>;
   findAll: () => Promise<User[]>;
   create: (user: Partial<User>) => User;
+  findByEmail: (email: string) => Promise<User | undefined>
 }

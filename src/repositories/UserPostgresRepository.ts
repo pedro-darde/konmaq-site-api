@@ -5,8 +5,7 @@ import { User } from "../models/User";
 @EntityRepository(User)
 export class UserPostgresRepository
   extends AbstractRepository<User>
-  implements UserRepository
-{
+  implements UserRepository {
   async add(user: User): Promise<User> {
     const userAdd = await this.repository.save(user);
     return userAdd;
@@ -24,6 +23,10 @@ export class UserPostgresRepository
   async findAll(): Promise<User[]> {
     return this.repository.find({ order: { id: `DESC` } });
   }
+
+  async findByEmail(email: string): Promise<User | undefined> {
+    return await this.repository.findOne({ where: { email } })
+  };
 
   create(user: Partial<User>): User {
     return this.repository.create(user);

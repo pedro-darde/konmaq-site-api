@@ -6,6 +6,7 @@ export interface DbUserAccount {
   findById: (id: number) => Promise<User>;
   findAll: () => Promise<User[]>;
   create: (user: Partial<User>) => User;
+  findByEmail: (email: string) => Promise<User | undefined>
 }
 
 export type DbAddUser = User;

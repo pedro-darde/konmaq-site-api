@@ -1,6 +1,7 @@
 import { ValidationError } from "class-validator";
 import { EntityNotFoundError } from "typeorm";
 import { ServerError } from "../errors/ServerError";
+import { UnauthorizedError } from "../errors/UnauthorizedError";
 import { HttpResponse } from "../protocols/http";
 
 export const badRequest = (error: string[]): HttpResponse => ({
@@ -22,6 +23,11 @@ export const serverError = (e: Error): HttpResponse => ({
   statusCode: 500,
   body: new ServerError(e.stack!),
 });
+
+export const unauthorized = (): HttpResponse => ({
+  statusCode: 401,
+  body: new UnauthorizedError()
+})
 
 export const entityNotFound = (e: EntityNotFoundError): HttpResponse => ({
   statusCode: 403,
