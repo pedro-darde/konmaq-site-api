@@ -56,6 +56,12 @@ export class User {
   @Column({ type: "varchar" })
   password: string;
 
+  @Column({ type: 'varchar' })
+  token?: string;
+
+  @Column({ type: 'varchar' })
+  type: string;
+
   @Column({ type: "boolean", default: true })
   active?: boolean;
 }

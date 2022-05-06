@@ -33,6 +33,16 @@ export class DbUser implements DbUserAccount {
     return await repo.findByEmail(email)
   }
 
+  async findByToken(token: string, role?: string): Promise<User | undefined> {
+    const repo = getCustomRepository(UserPostgresRepository)
+    return await repo.findByToken(token, role)
+  };
+
+  async updateAccessToken(id: number, token: string): Promise<void> {
+    const repo = getCustomRepository(UserPostgresRepository)
+    await repo.updateAccessToken(id, token)
+  };
+
   create(user: Partial<User>): User {
     const repo = getCustomRepository(UserPostgresRepository);
     return repo.create(user);

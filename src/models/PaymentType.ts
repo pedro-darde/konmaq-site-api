@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity("payment_types")
 export class PaymentType {
   @PrimaryGeneratedColumn("increment")
-  id: number;
+  id?: number;
 
   @Column({ type: `varchar` })
   description: string;

@@ -28,6 +28,18 @@ export class UserPostgresRepository
     return await this.repository.findOne({ where: { email } })
   };
 
+  async findByToken(token: string, role?: string): Promise<User | undefined> {
+    let where: { [key: string]: any } = {
+      token
+    }
+    if (role) where['role'] = role
+    return await this.repository.findOne({ where })
+  };
+
+  async updateAccessToken(id: number, token: string): Promise<void> {
+    await this.repository.save({ id, token })
+  };
+
   create(user: Partial<User>): User {
     return this.repository.create(user);
   }

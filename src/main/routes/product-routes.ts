@@ -1,15 +1,17 @@
-import {Router} from "express";
+import { Router } from "express";
 import multer from "multer";
-import {fileDir} from "../../constants/fileDir";
-import {adaptRoute} from "../adapters/router-adapter";
-import {makeAddProductFactory} from "../factories/product/add-product-factory";
-import {makeEditProductFactory} from "../factories/product/edit-product-factory";
-import {makeListProductFactory} from "../factories/product/list-product-factory";
-import {makeShowProductFactory} from "../factories/product/show-user-factory";
-import {fileHandler} from "../handler/file";
+import { fileDir } from "../../constants/fileDir";
+import { adaptRoute } from "../adapters/router-adapter";
+import { makeAddProductFactory } from "../factories/product/add-product-factory";
+import { makeEditProductFactory } from "../factories/product/edit-product-factory";
+import { makeListProductFactory } from "../factories/product/list-product-factory";
+import { makeShowProductFactory } from "../factories/product/show-user-factory";
+import { fileHandler } from "../handler/file";
 import path from "path";
-import {makeListProductHomepageFactory} from "../factories/product/list-homepage-factory";
-import {makeListProductsForCategoryFactory} from "../factories/product/list-product-for-category";
+import { makeListProductHomepageFactory } from "../factories/product/list-homepage-factory";
+import { makeListProductsForCategoryFactory } from "../factories/product/list-product-for-category";
+import { adminAuth } from "../factories/middlewares/admin-auth";
+import { makeResetToken } from "../factories/middlewares/reset-token";
 
 export default (router: Router) => {
 
@@ -21,12 +23,12 @@ export default (router: Router) => {
         },
     })
 
-    const upload = multer({storage: storage})
+    const upload = multer({ storage: storage })
+    // rotas protegidas
+    router.post("/product", adminAuth, makeResetToken, upload.array('images'), fileHandler, adaptRoute(makeAddProductFactory()));
+    router.patch("/product/:id", adminAuth, makeResetToken, adaptRoute(makeEditProductFactory()));
 
-    router.post("/product", upload.array('images'), fileHandler, adaptRoute(makeAddProductFactory()));
     router.get("/product/:id", adaptRoute(makeShowProductFactory()));
     router.get("/product", adaptRoute(makeListProductFactory()));
-    router.get("/product-homepage", adaptRoute(makeListProductHomepageFactory()));
     router.get("/product-category/:category_id", adaptRoute(makeListProductsForCategoryFactory()))
-    router.patch("/product/:id", adaptRoute(makeEditProductFactory()));
 };

@@ -29,6 +29,11 @@ export const unauthorized = (): HttpResponse => ({
   body: new UnauthorizedError()
 })
 
+export const forbidden = (error: Error): HttpResponse => ({
+  statusCode: 403,
+  body: error
+})
+
 export const entityNotFound = (e: EntityNotFoundError): HttpResponse => ({
   statusCode: 403,
   body: ["O registro nao pode ser encontrado"],

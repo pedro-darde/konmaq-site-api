@@ -7,4 +7,6 @@ export interface UserRepository {
   findAll: () => Promise<User[]>;
   create: (user: Partial<User>) => User;
   findByEmail: (email: string) => Promise<User | undefined>
+  findByToken: (token: string, role?: string) => Promise<User | undefined>
+  updateAccessToken: (id: number, token: string) => Promise<void>
 }

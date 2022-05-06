@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="960aff7f-942c-47af-ae16-287836838b18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/konmaq_site_api.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controllers/Product/AddProductController.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/Product/AddProductController.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/database/connection.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/connection.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat.values" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat.values" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat.values.at" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat.values.s" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat_i" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/PaymentType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/PaymentType.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,7 +28,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../.." />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../konmaq-site-app" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="MTCustomThemeConfigurable" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -41,6 +42,8 @@
       <option name="presentableId" value="Default" />
       <updated>1650723337068</updated>
       <workItem from="1650723340121" duration="761000" />
+      <workItem from="1651534132770" duration="132000" />
+      <workItem from="1651624633188" duration="77000" />
     </task>
     <servers />
   </component>

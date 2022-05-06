@@ -1,5 +1,5 @@
 import { Authentication } from "../../domain/authentication";
-import { ok, unauthorized } from "../../helpers/http-helper";
+import { ok, serverError, unauthorized } from "../../helpers/http-helper";
 import { Controller } from "../../protocols/Controller";
 import { HttpRequest, HttpResponse } from "../../protocols/http";
 
@@ -11,14 +11,18 @@ export class LoginController implements Controller {
     }
 
     async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
-        const { email, password } = httpRequest.body
+        try {
+            const { email, password } = httpRequest.body
 
-        const accessToken = await this.authentication.auth({ email, password })
+            const accessToken = await this.authentication.auth({ email, password })
+            if (!accessToken) {
+                return unauthorized()
+            }
 
-        if (!accessToken) {
-            return unauthorized()
+            return ok({ accessToken })
+        } catch (err: any) {
+            console.log(err)
+            return serverError(err)
         }
-
-        return ok({ accessToken })
     }
 }
