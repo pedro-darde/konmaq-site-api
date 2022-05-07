@@ -15,7 +15,7 @@ export class DbAuthentication implements Authentication {
         if (account && account.id) {
             const isValid = await bcrypt.compare(password, account.password)
             if (isValid) {
-                const accessToken = await this.encrypter.encrypt(account.id?.toString()!)
+                const accessToken = await this.encrypter.encrypt(account.id?.toString()!, account.type)
                 await this.dbUser.updateAccessToken(account.id, accessToken)
                 return accessToken
             }

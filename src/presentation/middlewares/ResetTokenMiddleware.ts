@@ -16,7 +16,7 @@ export class ResetTokenMiddleware implements Middleware {
     async handle(request: HttpRequest): Promise<HttpResponse> {
         try {
             const account = await this.dbUser.findByToken(request.headers?.['x-access-token'])
-            const newAccessToken = await this.encrypter.encrypt(account?.id?.toString()!)
+            const newAccessToken = await this.encrypter.encrypt(account?.id?.toString()!, account?.type)
             await this.dbUser.updateAccessToken(account?.id!, newAccessToken)
             return ok({ newAccessToken })
         } catch (err) {
