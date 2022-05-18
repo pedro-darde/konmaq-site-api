@@ -7,7 +7,7 @@ import { Middleware } from "../../protocols/Middleware";
 
 export const makeAuthMiddleware = (role?: string): Middleware => {
     const dbUser = new DbUser()
-    const jwtAdapter = new JwtAdapter(randomUUID())
+    const jwtAdapter = new JwtAdapter(process.env.JWT_SECRET  || 'RANDOM_KEY_HERE')
     const loadAccountByToken = new DbLoadAccountByToken(jwtAdapter, dbUser)
     return new AuthMiddleware(loadAccountByToken, jwtAdapter, role)
 }

@@ -3,7 +3,6 @@ import { AddPaymentTypeController } from "../../controllers/PaymentType/AddPayme
 import { DbPaymentType } from "../../data/usecase/DbPaymentType";
 import { adaptRoute } from "../adapters/router-adapter";
 import { adminAuth } from "../factories/middlewares/admin-auth";
-import { makeResetToken } from "../factories/middlewares/reset-token";
 
 
 const makeAddPaymentTypeController = () => {
@@ -13,5 +12,5 @@ const makeAddPaymentTypeController = () => {
 }
 
 export default (route: Router) => {
-    route.post('/payment-type', adminAuth, makeResetToken, adaptRoute(makeAddPaymentTypeController()))
+    route.post('/payment-type', adminAuth, adaptRoute(makeAddPaymentTypeController()))
 }

@@ -7,8 +7,8 @@ export class JwtAdapter implements Encrypter, Decrypter {
         this.secret = secret
     }
 
-    async encrypt(value: string, role?: string): Promise<string> {
-        const token = jwt.sign({ id: value, role }, this.secret, { expiresIn: "1 day" })
+    async encrypt(value: string, userName: string, role?: string): Promise<string> {
+        const token = jwt.sign({ id: value, role, userName }, this.secret, { expiresIn: "1 day" })
         return token
     }
 

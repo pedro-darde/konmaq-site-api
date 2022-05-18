@@ -11,7 +11,6 @@ import path from "path";
 import { makeListProductHomepageFactory } from "../factories/product/list-homepage-factory";
 import { makeListProductsForCategoryFactory } from "../factories/product/list-product-for-category";
 import { adminAuth } from "../factories/middlewares/admin-auth";
-import { makeResetToken } from "../factories/middlewares/reset-token";
 
 export default (router: Router) => {
 
@@ -25,10 +24,10 @@ export default (router: Router) => {
 
     const upload = multer({ storage: storage })
     // rotas protegidas
-    router.post("/product", adminAuth, makeResetToken, upload.array('images'), fileHandler, adaptRoute(makeAddProductFactory()));
-    router.patch("/product/:id", adminAuth, makeResetToken, adaptRoute(makeEditProductFactory()));
+    router.post("/product", adminAuth, upload.array('images'), fileHandler, adaptRoute(makeAddProductFactory()));
+    router.patch("/product/:id", adminAuth, adaptRoute(makeEditProductFactory()));
 
-    router.get("/product/:id", adaptRoute(makeShowProductFactory()));
+    router.get("/product/:id", adminAuth, adaptRoute(makeShowProductFactory()));
     router.get("/product", adaptRoute(makeListProductFactory()));
     router.get("/product-category/:category_id", adaptRoute(makeListProductsForCategoryFactory()))
 };

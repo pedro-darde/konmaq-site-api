@@ -13,7 +13,7 @@ export class ListSupplierController implements Controller {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      const suppliers = await this.dbSupplier.findAll();
+      const suppliers = await this.dbSupplier.findAll()
       return ok(suppliers);
     } catch (e: any) {
       return serverError(e);

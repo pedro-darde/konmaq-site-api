@@ -13,7 +13,6 @@ export class LoginController implements Controller {
     async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
         try {
             const { email, password } = httpRequest.body
-
             const accessToken = await this.authentication.auth({ email, password })
             if (!accessToken) {
                 return unauthorized()
@@ -21,7 +20,6 @@ export class LoginController implements Controller {
 
             return ok({ accessToken })
         } catch (err: any) {
-            console.log(err)
             return serverError(err)
         }
     }

@@ -32,7 +32,7 @@ export class UserPostgresRepository
     let where: { [key: string]: any } = {
       token
     }
-    if (role) where['role'] = role
+    if (role) where['type'] = role
     return await this.repository.findOne({ where })
   };
 
