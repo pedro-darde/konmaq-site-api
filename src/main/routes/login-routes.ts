@@ -3,7 +3,6 @@ import { LoginController } from "../../controllers/Login/LoginController";
 import { DbAuthentication } from "../../data/usecase/DbAuthentication";
 import { DbUser } from "../../data/usecase/DbUser";
 import { JwtAdapter } from "../../infra/JwtAdapter";
-import { randomUUID } from 'crypto'
 import { adaptRoute } from "../adapters/router-adapter";
 import { UpdateAccessTokenController } from "../../controllers/Login/UpdateAccessToken";
 
