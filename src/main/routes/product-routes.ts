@@ -11,6 +11,7 @@ import path from "path";
 import { makeListProductHomepageFactory } from "../factories/product/list-homepage-factory";
 import { makeListProductsForCategoryFactory } from "../factories/product/list-product-for-category";
 import { adminAuth } from "../factories/middlewares/admin-auth";
+import { makeFindByIdsProduct } from "../factories/product/find-by-ids-product-factory";
 
 export default (router: Router) => {
 
@@ -29,5 +30,6 @@ export default (router: Router) => {
 
     router.get("/product/:id", adminAuth, adaptRoute(makeShowProductFactory()));
     router.get("/product", adaptRoute(makeListProductFactory()));
+    router.get('/order-product', adaptRoute(makeFindByIdsProduct()))
     router.get("/product-category/:category_id", adaptRoute(makeListProductsForCategoryFactory()))
 };

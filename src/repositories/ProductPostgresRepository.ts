@@ -3,6 +3,7 @@ import {
   EntityRepository,
   getConnection,
   getCustomRepository,
+  In,
 } from "typeorm";
 import {
   CustomProductFind,
@@ -14,8 +15,7 @@ import { ProductCategoryPostgresRepository } from "./ProductCategoryPostgresRepo
 @EntityRepository(Product)
 export class ProductPostgresRepository
   extends AbstractRepository<Product>
-  implements ProductRepository
-{
+  implements ProductRepository {
   async add(product: Product): Promise<Product> {
     const productAdd = await this.repository.save(product);
     return productAdd;
@@ -40,6 +40,13 @@ export class ProductPostgresRepository
       supplier: product.supplier.id,
     };
   }
+
+  async findByIds(ids: number[]): Promise<Product[]> {
+    return await this.repository.find({
+      where: { id: In(ids) },
+      relations: ["files"]
+    })
+  };
 
   async findAll(): Promise<Product[]> {
     return this.repository.find({

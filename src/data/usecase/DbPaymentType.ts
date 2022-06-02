@@ -14,4 +14,14 @@ export class DbPaymentType implements DbPaymentTypeImpl {
         const repo = getCustomRepository(PaymentTypePostgresRepository)
         return await repo.add(paymentType)
     }
+
+    async edit(id: number, paymentType: Partial<PaymentType>): Promise<PaymentType> {
+        const repo = getCustomRepository(PaymentTypePostgresRepository)
+        return await repo.edit(id, paymentType)
+    }
+
+    async findById(id: number): Promise<PaymentType> {
+        const repo = getCustomRepository(PaymentTypePostgresRepository)
+        return repo.findById(id)
+    }
 }

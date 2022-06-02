@@ -8,6 +8,7 @@ export interface DbProductImpl {
   findAll: () => Promise<Product[]>;
   findAllToHomePage: () => Promise<{ releases: Product[]; popular: Product[] }>;
   create: (product: Partial<Product>) => Product;
+  findByIds: (ids: number[]) => Promise<Product[]>
   startTranscation: () => Promise<void>;
   commit: () => Promise<void>;
   rollback: () => Promise<void>;

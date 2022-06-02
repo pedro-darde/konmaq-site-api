@@ -5,8 +5,14 @@ import { PaymentType } from "../models/PaymentType";
 @EntityRepository(PaymentType)
 export class PaymentTypePostgresRepository extends AbstractRepository<PaymentType> implements PaymentTypeRepository {
     findAll: () => Promise<PaymentType[]>;
-    edit: (id: number, entity: Partial<PaymentType>) => Promise<PaymentType>;
-    findById: (id: number) => Promise<PaymentType>;
+
+    async edit(id: number, entity: Partial<PaymentType>): Promise<PaymentType> {
+        return await this.repository.save({ id, ...entity })
+    };
+
+    async findById(id: number): Promise<PaymentType> {
+        return await this.repository.findOneOrFail(id)
+    };
 
     async add(entity: PaymentType): Promise<PaymentType> {
         return await this.repository.save(entity)

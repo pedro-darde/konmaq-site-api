@@ -33,6 +33,11 @@ export class DbProduct implements DbProductImpl {
     return await repo.findAllToHomePage();
   }
 
+  async findByIds (ids: number[]) : Promise<Product[]> {
+    const repo = getCustomRepository(ProductPostgresRepository)
+    return await repo.findByIds(ids)
+  } 
+
   async startTranscation(): Promise<void> {
     const repo = getCustomRepository(ProductPostgresRepository);
     await repo.startTranscation();

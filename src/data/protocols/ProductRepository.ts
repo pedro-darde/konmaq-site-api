@@ -10,6 +10,7 @@ export interface ProductRepository
   extends Omit<IRepository<Product>, "findById"> {
   findAllToHomePage: () => Promise<{ releases: Product[]; popular: Product[] }>;
   findById: (id: number) => Promise<CustomProductFind>;
+  findByIds: (ids: number[]) => Promise<Product[]>;
   startTranscation: () => Promise<void>;
   commit: () => Promise<void>;
   rollback: () => Promise<void>;

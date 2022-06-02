@@ -37,7 +37,7 @@ export class UserPostgresRepository
   };
 
   async updateAccessToken(id: number, token: string): Promise<void> {
-    await this.repository.save({ id, token })
+    await this.repository.update(id, { token })
   };
 
   create(user: Partial<User>): User {
