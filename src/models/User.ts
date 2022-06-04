@@ -1,6 +1,7 @@
 import { IsEmail, IsEmpty } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { UniqueValidator } from "../validation/UniqueConstraintValidation";
+import { UserAddress } from "./UserAddress";
 
 @Entity("users")
 export class User {
@@ -32,36 +33,21 @@ export class User {
   @Column({ type: "integer" })
   country: number;
 
-  @Column({ type: "integer" })
-  city: number;
-
-  @Column({ type: "varchar" })
-  city_name: string;
-
-  @Column({ type: "varchar" })
-  street_name: string;
-
-  @Column({ type: "varchar" })
-  street_number: string;
-
-  @Column({ type: "varchar" })
-  additional: string;
-
-  @Column({ type: "varchar" })
-  cep: string;
-
-  @Column({ type: "varchar" })
-  neighboor: string;
-
   @Column({ type: "varchar" })
   password: string;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: "varchar" })
   token?: string;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: "varchar" })
   type: string;
 
   @Column({ type: "boolean", default: true })
   active?: boolean;
+
+  @OneToMany(() => UserAddress, (userAdress) => userAdress.user, {
+    cascade: true,
+    eager: true,
+  })
+  addresses: UserAddress[];
 }

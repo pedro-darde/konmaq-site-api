@@ -16,6 +16,7 @@ export class MunicipioController implements Controller {
       const municipios = await this.dbMunicipio.findByUF(uf);
       return ok(municipios);
     } catch (e: any) {
+      console.log(e);
       return serverError(e);
     }
   }
