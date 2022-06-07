@@ -30,9 +30,6 @@ export class User {
   @Column({ type: "varchar" })
   phone_number: string;
 
-  @Column({ type: "integer" })
-  country: number;
-
   @Column({ type: "varchar" })
   password: string;
 
