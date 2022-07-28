@@ -35,6 +35,8 @@ export class AddUserController implements Controller {
       const account = await this.dbUser.add(user);
       
       userAddress.user = account;
+
+      console.log(userAddress)
       await this.saveAddress(userAddress);
 
       return ok(account);

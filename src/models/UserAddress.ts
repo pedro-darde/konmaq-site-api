@@ -31,6 +31,9 @@ export class UserAddress {
   @Column({ type: "varchar" })
   cep: string;
 
+  @Column()
+  country: number;
+
   @Column({ type: "varchar" })
   neighboor: string;
 

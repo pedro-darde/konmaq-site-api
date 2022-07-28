@@ -4,5 +4,6 @@ export interface DbUserAddressImpl {
   add: (userAddress: UserAddress) => Promise<UserAddress>;
   edit: (id: number, userAddress: UserAddress) => Promise<UserAddress>;
   findById: (id: number) => Promise<UserAddress>;
+  findByUserId: (user_id: number) => Promise<UserAddress[]>;
   findAll: () => Promise<UserAddress[]>;
 }

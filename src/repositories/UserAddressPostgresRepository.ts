@@ -11,6 +11,14 @@ export class UserAddressPostgresRepository
     return await this.repository.save(userAddress);
   }
 
+  async findByUser(user_id: number): Promise<UserAddress[]> {
+    return await this.repository.find({
+      where: {
+        user: user_id,
+      },
+    });
+  }
+
   create: (user: Partial<UserAddress>) => UserAddress;
 
   edit: (id: number, entity: Partial<UserAddress>) => Promise<UserAddress>;
