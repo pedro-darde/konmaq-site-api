@@ -5,25 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="960aff7f-942c-47af-ae16-287836838b18" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat.values" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat.values" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat.values.at" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat.values.at" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat.values.s" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat.values.s" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat_i" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/9a50e13b-5b1f-4165-8dc5-48279921e4de/entities/entities.dat_i" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/protocols/Decrypter.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/protocols/Decrypter.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/protocols/ProductRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/protocols/ProductRepository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/usecase/DbPaymentType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/usecase/DbPaymentType.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/data/usecase/DbProduct.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/usecase/DbProduct.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/db-payment-type.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/db-payment-type.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/db-product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/db-product.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/middlewares/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/middlewares/auth.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/routes/payment-type-routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/routes/payment-type-routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/routes/product-routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/routes/product-routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/presentation/middlewares/AuthMiddleware.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentation/middlewares/AuthMiddleware.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositories/PaymentTypePostgresRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/PaymentTypePostgresRepository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositories/ProductPostgresRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/ProductPostgresRepository.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/repositories/UserPostgresRepository.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/repositories/UserPostgresRepository.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/usecase/DbAuthentication.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/data/usecase/DbAuthentication.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/migrations/1645053791671-add_user_neighboor.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/database/migrations/1655471996085-user-address-nickname.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/database/migrations/1655471996085-user-address-nickname.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,25 +19,35 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="28Cb5XV3jlrzcN62l72vBKuEMCa" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DatabaseDriversLRU" value="postgresql" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../konmaq-site-app" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="MTCustomThemeConfigurable" />
-    <property name="ts.external.directory.path" value="C:\Users\T-Gamer\Documents\Projects\konmaq\konmaq-site-api\node_modules\typescript\lib" />
-    <property name="vue.rearranger.settings.migration" value="true" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/pedro/Documents/projects/dai.ly-app",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "ts.external.directory.path": "C:\\Users\\pedro\\Documents\\projects\\konmaq-site-api\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\pedro\Documents\projects\konmaq-site-api" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -65,10 +61,16 @@
       <workItem from="1651534132770" duration="132000" />
       <workItem from="1651624633188" duration="77000" />
       <workItem from="1654045078633" duration="2428000" />
+      <workItem from="1685065875883" duration="3207000" />
+      <workItem from="1687405061483" duration="459000" />
+      <workItem from="1690423830278" duration="163000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
   </component>
 </project>

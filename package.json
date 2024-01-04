@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/main/server.ts"
+    "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/main/server.ts",
+    "typeorm:cli": "ts-node ./node_modules/typeorm/cli -f ./ormconfig.js",
+    "typeorm": "typeorm-ts-node-esm"
   },
   "author": "",
   "license": "ISC",

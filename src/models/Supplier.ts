@@ -26,7 +26,7 @@ export class Supplier {
   @Column({ type: `integer` })
   country: number;
 
-  @Column({ type: "integer" })
+  @Column({ type: "varchar" })
   city: number;
 
   @Column({ type: "varchar" })

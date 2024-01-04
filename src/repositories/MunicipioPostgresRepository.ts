@@ -1,6 +1,7 @@
 import { AbstractRepository, EntityRepository } from "typeorm";
 import { MunicipioRepository } from "../data/protocols/MunicipioRepository";
 import { Municipio } from "../models/Municipio";
+import { log } from "console";
 
 @EntityRepository(Municipio)
 export class MunicipioPostgresRepository
@@ -9,7 +10,6 @@ export class MunicipioPostgresRepository
 {
   async findByUF(uf: number): Promise<Municipio[]> {
     const municipios = this.repository.find({ where: { cod_estado: uf } });
-
     return municipios;
   }
 }

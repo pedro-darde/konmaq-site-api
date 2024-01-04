@@ -7,6 +7,7 @@ export class DbMunicipio implements DbMunicipioImpl {
   async findByUF(uf: number): Promise<Municipio[]> {
     const repo = getCustomRepository(MunicipioPostgresRepository);
     const municipios = await repo.findByUF(uf);
+    console.log(uf);
 
     return municipios;
   }

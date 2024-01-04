@@ -8,7 +8,7 @@ export class userAddressNickname1655471996085 implements MigrationInterface {
         name: "nickname",
         type: "varchar",
         isNullable: false,
-        default: "",
+        default: "''",
       })
     );
   } 

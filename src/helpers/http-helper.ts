@@ -19,10 +19,13 @@ export const ok = (data: any): HttpResponse => ({
   body: { message: "Informações inseridas com sucesso", data },
 });
 
-export const serverError = (e: Error): HttpResponse => ({
-  statusCode: 500,
-  body: new ServerError(e.stack!),
-});
+export const serverError = (e: Error): HttpResponse => {
+  console.log(e)
+  return {
+    statusCode: 500,
+    body: new ServerError(e.stack!),
+  }
+};
 
 export const unauthorized = (): HttpResponse => ({
   statusCode: 401,
